@@ -1,23 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import "./Form.css";
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
 
 export const Form = ({ list, onSubmit }) => {
   const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
 
-  const classes = useStyles();
-
   const inputRef = useRef(null);
+
+  const theme = useTheme();
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -39,29 +33,10 @@ export const Form = ({ list, onSubmit }) => {
   };
 
   return (
-    // <div className="Form">
-    //   <input
-    //     className="Form-author"
-    //     type="text"
-    //     value={author}
-    //     placeholder="Enter your name"
-    //     onChange={handleChangeAuthor}
-    //   />
-    //   <input
-    //     className="Form-text"
-    //     type="text"
-    //     value={text}
-    //     placeholder="Write your message"
-    //     onChange={handleChangeText}
-    //   />
-    //   <button className="Form-btn" onClick={handleButtonClick}>
-    //     Send message
-    //   </button>
-    // </div>
     <div className="Form">
       <TextField
         className="Form-author"
-        id="standard-full"
+        id="standard"
         style={{ padding: 10 }}
         value={author}
         placeholder="Enter your name"
@@ -77,15 +52,39 @@ export const Form = ({ list, onSubmit }) => {
         onChange={handleChangeText}
       />
       <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        endIcon={<Icon>send</Icon>}
         className="Form-btn"
+        variant="contained"
+        endIcon={<Icon>send</Icon>}
         onClick={handleButtonClick}
+        style={{
+          paddingLeft: 10,
+          paddingRight: 10,
+          backgroundColor: theme.palette.primary.main,
+          borderColor: theme.palette.secondary.main,
+          color: "white",
+        }}
       >
         Send
       </Button>
     </div>
   );
+  // <div className="Form">
+  //   <input
+  //     className="Form-author"
+  //     type="text"
+  //     value={author}
+  //     placeholder="Enter your name"
+  //     onChange={handleChangeAuthor}
+  //   />
+  //   <input
+  //     className="Form-text"
+  //     type="text"
+  //     value={text}
+  //     placeholder="Write your message"
+  //     onChange={handleChangeText}
+  //   />
+  //   <button className="Form-btn" onClick={handleButtonClick}>
+  //     Send message
+  //   </button>
+  // </div>
 };

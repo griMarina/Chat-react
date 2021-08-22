@@ -1,16 +1,17 @@
-import { List, ListItem } from "@material-ui/core";
+import { List, ListItem, useTheme } from "@material-ui/core";
 import { useState } from "react";
 import "./ChatList.css";
 
-export const ChatList = ({ list }) => {
-  const [chatList, setChatList] = useState([]);
-  const [chat, setChat] = useState({ name: list, id: "" });
+export const ChatList = () => {
+  const [chat, setChat] = useState({ name: "Marina ", id: "001" });
+
+  const theme = useTheme();
 
   return (
     <List className="chat-list">
-      {list.map((chat) => {
-        return <ListItem></ListItem>;
-      })}
+      <ListItem style={{ color: theme.palette.secondary.main }}>
+        {chat.id}: {chat.name}
+      </ListItem>
     </List>
   );
 };

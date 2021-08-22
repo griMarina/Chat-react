@@ -3,15 +3,26 @@ import { MessageList } from "./components/message-list";
 import { Form } from "./components/form";
 import { ChatList } from "./components/chat-list";
 import "./App.css";
+import { createTheme, ThemeProvider, useTheme } from "@material-ui/core/styles";
 
 const App = () => {
   const [list, setList] = useState([]);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#e9601e",
+      },
+      secondary: {
+        main: "#ff5722",
+      },
+    },
+  });
 
   const getId = () => {
     return Math.random();
   };
 
-  // правильно ли я поняла, что в useCallback оборачиваем только onSubmit, или handleButtonClick в Form.js тоже надо?
   const onSubmit = useCallback(
     ({ author = "Marina", text }) => {
       let message = {
@@ -34,21 +45,23 @@ const App = () => {
       );
 
       return () => {
-        clearTimeout(timer); // очистка эффекта
+        clearTimeout(timer);
       };
     }
-  }, [list]); // для вызова функции только при изменении массива list
+  }, [list]);
 
   return (
-    <div className="App">
-      <div className="App-main">
-        <ChatList list={list} />
-        <div className="App-right">
-          <MessageList list={list} />
-          <Form list={list} onSubmit={onSubmit} />
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <div className="App-main">
+          <ChatList list={list} />
+          <div className="App-right">
+            <MessageList list={list} />
+            <Form list={list} onSubmit={onSubmit} />
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
