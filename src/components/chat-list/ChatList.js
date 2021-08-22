@@ -8,9 +8,16 @@ export const ChatList = () => {
   const theme = useTheme();
 
   return (
-    <List className="chat-list">
-      <ListItem style={{ color: theme.palette.secondary.main }}>
-        {chat.id}: {chat.name}
+    <List className="chat-list" style={{ padding: 20 }}>
+      <ListItem
+        className="chat"
+        style={{
+          backgroundColor: theme.palette.primary.light,
+          color: "white",
+          width: "100px",
+        }}
+      >
+        {chat.name}
       </ListItem>
     </List>
   );
