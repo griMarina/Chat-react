@@ -25,7 +25,7 @@ const App = () => {
   };
 
   const onSubmit = useCallback(
-    ({ author = "Marina", text }) => {
+    ({ author, text }) => {
       let message = {
         id: getId(),
         author: author,
