@@ -60,7 +60,6 @@ export const Form = ({ list, onSubmit }) => {
           paddingLeft: 10,
           paddingRight: 10,
           backgroundColor: theme.palette.primary.main,
-          borderColor: theme.palette.secondary.main,
           color: "white",
         }}
       >

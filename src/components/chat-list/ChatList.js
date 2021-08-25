@@ -12,9 +12,9 @@ export const ChatList = ({ list }) => {
             key={chat.contact}
             className="chat"
             style={{
-              backgroundColor: theme.palette.primary.main,
+              backgroundColor: theme.palette.secondary.main,
               color: "white",
-              width: "100px",
+              width: "fit-content",
               marginBottom: "10px",
             }}
           >
