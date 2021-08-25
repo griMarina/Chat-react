@@ -14,7 +14,7 @@ const App = () => {
         main: "#e68431",
       },
       secondary: {
-        main: "#ff5722",
+        main: "#a6d1f3",
       },
     },
   });
