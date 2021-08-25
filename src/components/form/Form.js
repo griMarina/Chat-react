@@ -6,7 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import "./Form.css";
 
 export const Form = ({ list, onSubmit }) => {
-  const [author, setAuthor] = useState("");
+  const [contact, setContact] = useState("");
   const [text, setText] = useState("");
 
   const inputRef = useRef(null);
@@ -18,14 +18,14 @@ export const Form = ({ list, onSubmit }) => {
   }, [list]);
 
   const handleButtonClick = () => {
-    onSubmit({ author, text });
+    onSubmit({ contact, text });
 
-    setAuthor("");
+    setContact("");
     setText("");
   };
 
-  const handleChangeAuthor = (e) => {
-    setAuthor(e.target.value);
+  const handleChangeContact = (e) => {
+    setContact(e.target.value);
   };
 
   const handleChangeText = (e) => {
@@ -35,21 +35,21 @@ export const Form = ({ list, onSubmit }) => {
   return (
     <div className="Form">
       <TextField
-        className="Form-author"
-        id="standard"
-        style={{ padding: 10 }}
-        value={author}
-        placeholder="Enter your name"
-        onChange={handleChangeAuthor}
-        inputRef={inputRef}
-      />
-      <TextField
         className="Form-text"
         id="standard-full"
         style={{ padding: 10 }}
-        placeholder="Write your message"
+        placeholder="Type your text"
         value={text}
         onChange={handleChangeText}
+        inputRef={inputRef}
+      />
+      <TextField
+        className="Form-author"
+        id="standard"
+        style={{ padding: 10 }}
+        value={contact}
+        placeholder="To: "
+        onChange={handleChangeContact}
       />
       <Button
         className="Form-btn"
@@ -68,23 +68,4 @@ export const Form = ({ list, onSubmit }) => {
       </Button>
     </div>
   );
-  // <div className="Form">
-  //   <input
-  //     className="Form-author"
-  //     type="text"
-  //     value={author}
-  //     placeholder="Enter your name"
-  //     onChange={handleChangeAuthor}
-  //   />
-  //   <input
-  //     className="Form-text"
-  //     type="text"
-  //     value={text}
-  //     placeholder="Write your message"
-  //     onChange={handleChangeText}
-  //   />
-  //   <button className="Form-btn" onClick={handleButtonClick}>
-  //     Send message
-  //   </button>
-  // </div>
 };

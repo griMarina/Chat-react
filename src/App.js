@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { MessageList } from "./components/message-list";
 import { Form } from "./components/form";
 import { ChatList } from "./components/chat-list";
 import "./App.css";
-import { createTheme, ThemeProvider, useTheme } from "@material-ui/core/styles";
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -11,8 +11,7 @@ const App = () => {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#e9601e",
-        light: "#e96132de",
+        main: "#e68431",
       },
       secondary: {
         main: "#ff5722",
@@ -25,10 +24,10 @@ const App = () => {
   };
 
   const onSubmit = useCallback(
-    ({ author, text }) => {
+    ({ contact, text }) => {
       let message = {
         id: getId(),
-        author: author,
+        contact: contact,
         text: text,
       };
 
@@ -39,9 +38,9 @@ const App = () => {
 
   useEffect(() => {
     if (list.length) {
-      const lastMesAuthor = list[list.length - 1].author;
+      const lastContact = list[list.length - 1].contact;
       const timer = setTimeout(
-        () => alert(`${lastMesAuthor}, your message has been sent!`),
+        () => alert(`Your sent a message to ${lastContact}.`),
         1500
       );
 
