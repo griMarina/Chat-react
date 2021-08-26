@@ -1,0 +1,23 @@
+.Form {
+    margin: 30px;
+    display: flex;
+    flex-grow: 0;
+    justify-content: space-between;
+}
+
+.Form-author {
+    border-radius: 5px;
+    background-color: #fff;
+    width: 15%;
+}
+
+.Form-text {
+    border-radius: 5px;
+    background-color: #fff;
+    width: 65%;
+}
+
+.Form-btn {
+    text-transform: uppercase;
+    width: 10%;
+}

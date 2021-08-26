@@ -1,0 +1,15 @@
+.message-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.message {
+    background-color: #ffff;
+    border-radius: 5px;
+    width:fit-content;
+    margin: 7px;
+    padding: 5px;
+    color: #3f51b5;
+}
