@@ -3,25 +3,22 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { MessageList } from "./components/message-list";
 import { Form } from "./components/form";
 import { ChatList } from "./components/chat-list";
+import { getId } from "./utils";
 import "./App.css";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#e68431",
+    },
+    secondary: {
+      main: "#a6d1f3",
+    },
+  },
+});
 
 const App = () => {
   const [list, setList] = useState([]);
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#e68431",
-      },
-      secondary: {
-        main: "#a6d1f3",
-      },
-    },
-  });
-
-  const getId = () => {
-    return Math.random();
-  };
 
   const onSubmit = useCallback(
     ({ contact, text }) => {
