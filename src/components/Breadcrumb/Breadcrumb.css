@@ -1,0 +1,9 @@
+.MuiBreadcrumbs-ol.breadcrumbs-link {
+    display: flex;
+}
+
+.MuiSvgIcon-root.breadcrumbs-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}

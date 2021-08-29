@@ -1,3 +1,7 @@
-export const getId = () => {
-  return Math.random();
-};
+export default function getId() {
+  let i = 1;
+
+  return function () {
+    return i++;
+  };
+}

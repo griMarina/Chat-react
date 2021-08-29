@@ -5,7 +5,7 @@ import { useTheme } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
 import "./Form.css";
 
-export const Form = ({ list, onSubmit }) => {
+export const Form = ({ messages, onSubmit }) => {
   const [contact, setContact] = useState("");
   const [text, setText] = useState("");
 
@@ -15,7 +15,7 @@ export const Form = ({ list, onSubmit }) => {
 
   useEffect(() => {
     inputRef.current?.focus();
-  }, [list]);
+  }, [messages]);
 
   const handleButtonClick = () => {
     onSubmit({ contact, text });
