@@ -1,6 +1,4 @@
 import { Redirect, useParams } from "react-router-dom";
-import AddIcon from "@material-ui/icons/Add";
-import IconButton from "@material-ui/core/IconButton";
 import { useCallback } from "react";
 import { ChatList } from "../../Components/Chats";
 import { Form } from "../../Components/Form";
