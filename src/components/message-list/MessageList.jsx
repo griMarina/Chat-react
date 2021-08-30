@@ -1,4 +1,3 @@
-import { Divider } from "@material-ui/core";
 import "./MessageList.css";
 
 export const MessageList = ({ messages }) => {
@@ -7,9 +6,7 @@ export const MessageList = ({ messages }) => {
       {messages.map((message) => {
         return (
           <div className="message" key={message.contact}>
-            <span>
-              {message.contact}: {message.text}
-            </span>
+            <span>{message.text}</span>
           </div>
         );
       })}

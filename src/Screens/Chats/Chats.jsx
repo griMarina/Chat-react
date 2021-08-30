@@ -37,9 +37,6 @@ export const Chats = ({ chats, setChats }) => {
         <MessageList messages={chats[chatId].messages} />
         <Form messages={chats[chatId].messages} onSubmit={onSubmit} />
       </div>
-      <IconButton aria-label="add">
-        <AddIcon />
-      </IconButton>
     </div>
   );
 };

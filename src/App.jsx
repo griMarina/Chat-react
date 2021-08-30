@@ -1,19 +1,19 @@
 import { BrowserRouter } from "react-router-dom";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+// import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Breadcrumb } from "./Components/Breadcrumb";
 import { Routing } from "./Routing/Routing";
 import "./App.css";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#e68431",
-    },
-    secondary: {
-      main: "#a6d1f3",
-    },
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#e68431",
+//     },
+//     secondary: {
+//       main: "#a6d1f3",
+//     },
+//   },
+// });
 
 const App = () => {
   return (
