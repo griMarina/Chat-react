@@ -1,9 +1,17 @@
-.MuiBreadcrumbs-ol.breadcrumbs-link {
-    display: flex;
+.MuiBreadcrumbs-root.breadcrumbs {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+.MuiBreadcrumbs-root.breadcrumbs > ol {
+    justify-content: center;
+
+}
+
 
 .MuiSvgIcon-root.breadcrumbs-icon {
     margin-right: 10px;
     width: 20px;
     height: 20px;
 }
+

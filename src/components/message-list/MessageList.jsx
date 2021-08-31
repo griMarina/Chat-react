@@ -5,7 +5,7 @@ export const MessageList = ({ messages }) => {
     <div className="message-list">
       {messages.map((message) => {
         return (
-          <div className="message" key={message.contact}>
+          <div className="message" key={message.id}>
             <span>{message.text}</span>
           </div>
         );

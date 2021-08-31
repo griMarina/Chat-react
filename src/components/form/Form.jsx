@@ -6,7 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import "./Form.css";
 
 export const Form = ({ messages, onSubmit }) => {
-  const [contact, setContact] = useState("");
+  // const [contact, setContact] = useState("");
   const [text, setText] = useState("");
 
   const inputRef = useRef(null);
@@ -18,15 +18,15 @@ export const Form = ({ messages, onSubmit }) => {
   }, [messages]);
 
   const handleButtonClick = () => {
-    onSubmit({ contact, text });
+    onSubmit({ text });
 
-    setContact("");
+    // setContact("");
     setText("");
   };
 
-  const handleChangeContact = (e) => {
-    setContact(e.target.value);
-  };
+  // const handleChangeContact = (e) => {
+  //   setContact(e.target.value);
+  // };
 
   const handleChangeText = (e) => {
     setText(e.target.value);
@@ -43,14 +43,14 @@ export const Form = ({ messages, onSubmit }) => {
         onChange={handleChangeText}
         inputRef={inputRef}
       />
-      <TextField
+      {/* <TextField
         className="Form-author"
         id="standard"
         style={{ padding: 10 }}
         value={contact}
         placeholder="To: "
         onChange={handleChangeContact}
-      />
+      /> */}
       <Button
         className="Form-btn"
         variant="contained"

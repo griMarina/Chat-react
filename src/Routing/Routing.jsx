@@ -7,17 +7,14 @@ import { NoChat } from "../Screens/NoChat";
 import { ROUTES } from "./constants";
 
 const initialChats = {
-  id1: {
-    name: "Chat1",
-    messages: [{ contact: "Anna", text: "Hello!" }],
-  },
-  id2: {
-    name: "Chat2",
-    messages: [
-      { contact: "Mary", text: "Hi?" },
-      { contact: "Alex", text: "How are you?" },
-    ],
-  },
+  // id1: {
+  //   name: "Chat1",
+  //   messages: [{ text: "Hello!" }],
+  // },
+  // id2: {
+  //   name: "Chat2",
+  //   messages: [{ text: "Hi?" }, { text: "How are you?" }],
+  // },
 };
 
 export const Routing = () => {

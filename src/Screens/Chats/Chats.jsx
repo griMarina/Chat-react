@@ -3,14 +3,16 @@ import { useCallback } from "react";
 import { ChatList } from "../../Components/Chats";
 import { Form } from "../../Components/Form";
 import { MessageList } from "../../Components/Message-list";
+import getId from "../../utils";
 
 export const Chats = ({ chats, setChats }) => {
   const { chatId } = useParams();
 
   const onSubmit = useCallback(
-    ({ contact, text }) => {
+    ({ text }) => {
       const message = {
-        contact: contact,
+        id: getId(),
+        // contact: contact,
         text: text,
       };
 

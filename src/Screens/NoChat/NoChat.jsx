@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChatList } from "../../Components/Chats";
 
 export const NoChat = ({ chats, setChats }) => {
-  const [id, setId] = useState(3);
+  const [id, setId] = useState(1);
 
   const addChat = () => {
     let newChat = {
