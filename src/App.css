@@ -2,13 +2,18 @@ body {
   margin: 0 auto;
 }
 
-.App {
+/* .App {
   text-align: center;
+  min-height: 100vh;
+
+} */
+
+.App-list {
+  display: flex;
 }
 
 .App-main {
   display: flex;
-  min-height: 100vh;
 }
 
 .App-right {
