@@ -8,11 +8,11 @@ import { ROUTES } from "./constants";
 
 const initialChats = {
   // id1: {
-  //   name: "Chat1",
+  //   name: "Chat",
   //   messages: [{ text: "Hello!" }],
   // },
   // id2: {
-  //   name: "Chat2",
+  //   name: "Chat0",
   //   messages: [{ text: "Hi?" }, { text: "How are you?" }],
   // },
 };

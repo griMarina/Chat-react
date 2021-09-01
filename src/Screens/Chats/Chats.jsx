@@ -18,9 +18,8 @@ export const Chats = ({ chats, setChats }) => {
       };
 
       setChats((prevChats) => {
-        const messages = [...prevChats[chatId].messages, message];
         const newChats = { ...prevChats };
-        newChats[chatId].messages = messages;
+        newChats[chatId].messages = [...newChats[chatId].messages, message];
         return newChats;
       });
     },
