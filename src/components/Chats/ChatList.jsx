@@ -2,6 +2,7 @@ import { List, ListItem, ListItemText, useTheme } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Link } from "react-router-dom";
+import React from "react";
 import "./ChatList.css";
 
 export const ChatList = ({ chats, chatId, setChats }) => {
@@ -19,9 +20,8 @@ export const ChatList = ({ chats, chatId, setChats }) => {
     <List className="chat-list" style={{ padding: 20 }}>
       {Object.keys(chats).map((id) => {
         return (
-          <>
+          <React.Fragment key={id}>
             <ListItem
-              key={id}
               className="chat"
               style={{
                 backgroundColor: theme.palette.primary.main,
@@ -40,7 +40,7 @@ export const ChatList = ({ chats, chatId, setChats }) => {
                 <DeleteIcon />
               </IconButton>
             </ListItem>
-          </>
+          </React.Fragment>
         );
       })}
     </List>

@@ -3,7 +3,8 @@ import { useCallback } from "react";
 import { ChatList } from "../../Components/Chats";
 import { Form } from "../../Components/Form";
 import { MessageList } from "../../Components/Message-list";
-import getId from "../../utils";
+import { ROUTES } from "../../Routing/constants";
+import { GetId } from "../../utils";
 
 export const Chats = ({ chats, setChats }) => {
   const { chatId } = useParams();
@@ -11,7 +12,7 @@ export const Chats = ({ chats, setChats }) => {
   const onSubmit = useCallback(
     ({ text }) => {
       const message = {
-        id: getId(),
+        id: GetId(),
         // contact: contact,
         text: text,
       };
@@ -27,7 +28,7 @@ export const Chats = ({ chats, setChats }) => {
   );
 
   if (!chatId || !chats[chatId]) {
-    return <Redirect to="/nochat" />;
+    return <Redirect to={ROUTES.NO_CHAT} />;
   }
 
   return (
