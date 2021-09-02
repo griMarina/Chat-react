@@ -1,14 +1,14 @@
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import { ChatList } from "../../Components/Chats";
-import { GetId } from "../../utils.js";
-import { GetCounter } from "../../utils.js";
+import { getId } from "../../utils.js";
+import { getCounter } from "../../utils.js";
 
-const counter = GetCounter();
+const counter = getCounter();
 
 export const NoChat = ({ chats, setChats }) => {
   const addChat = () => {
-    const id = GetId();
+    const id = getId();
     setChats({
       ...chats,
       [id]: {

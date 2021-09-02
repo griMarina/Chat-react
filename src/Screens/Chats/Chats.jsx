@@ -4,7 +4,7 @@ import { ChatList } from "../../Components/Chats";
 import { Form } from "../../Components/Form";
 import { MessageList } from "../../Components/Message-list";
 import { ROUTES } from "../../Routing/constants";
-import { GetId } from "../../utils";
+import { getId } from "../../utils";
 
 export const Chats = ({ chats, setChats }) => {
   const { chatId } = useParams();
@@ -12,7 +12,7 @@ export const Chats = ({ chats, setChats }) => {
   const onSubmit = useCallback(
     ({ text }) => {
       const message = {
-        id: GetId(),
+        id: getId(),
         // contact: contact,
         text: text,
       };
