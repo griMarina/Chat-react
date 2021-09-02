@@ -2,7 +2,7 @@ import { TOGGLE_SHOW_NAME_ACTION } from "./actions";
 
 const initialState = {
   showName: false,
-  name: "Default",
+  name: "Marina",
 };
 
 export const profileReducer = (state = initialState, action) => {

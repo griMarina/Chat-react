@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Checkbox } from "@material-ui/core";
 import { toggleShowNameAction } from "../../Store/Profile/actions";
 import { nameSelector } from "../../Store/Profile/selectors";
 import { showNameSelector } from "../../Store/Profile/selectors";
@@ -9,20 +10,20 @@ export const Profile = () => {
   const showName = useSelector(showNameSelector);
   const dispatch = useDispatch();
 
-  const setShowName = useCallback(() => {
+  const handleChange = useCallback(() => {
     dispatch(toggleShowNameAction);
   }, [dispatch]);
 
   return (
     <div>
-      <h4>Profile</h4>
-      <input
-        type="checkbox"
+      <h3>Profile</h3>
+      <Checkbox
         checked={showName}
-        value={showName}
-        onChange={setShowName}
+        onChange={handleChange}
+        color="primary"
+        inputProps={{ "aria-label": "secondary checkbox" }}
       />
-      <span>Show Name</span>
+      <span>Show name</span>
       {showName && <div>{name}</div>}
     </div>
   );
