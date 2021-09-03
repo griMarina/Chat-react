@@ -32,7 +32,7 @@ export const ChatList = ({ chats, chatId, setChats }) => {
             >
               <Link to={`/chats/${id}`}>
                 <ListItemText
-                  style={{ color: id === chatId ? "#000000" : "grey" }}
+                  style={{ color: id === chatId ? "white" : "grey" }}
                   primary={chats[id].name}
                 />
               </Link>

@@ -19,33 +19,3 @@ const App = () => {
 };
 
 export default App;
-
-// дз 2
-// const [messages, setList] = useState([]);
-
-// const onSubmit = useCallback(
-//   ({ contact, text }) => {
-//     let message = {
-//       id: getId(),
-//       contact: contact,
-//       text: text,
-//     };
-
-//     setList([...messages, message]);
-//   },
-//   [messages]
-// );
-
-// useEffect(() => {
-//   if (list.length) {
-//     const lastContact = messages[messages.length - 1].contact;
-//     const timer = setTimeout(
-//       () => alert(`Your sent a message to ${lastContact}.`),
-//       1500
-//     );
-
-//     return () => {
-//       clearTimeout(timer);
-//     };
-//   }
-// }, [list]);

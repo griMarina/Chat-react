@@ -4,6 +4,7 @@ import { Checkbox } from "@material-ui/core";
 import { toggleShowNameAction } from "../../Store/Profile/actions";
 import { nameSelector } from "../../Store/Profile/selectors";
 import { showNameSelector } from "../../Store/Profile/selectors";
+import "./Profile.css";
 
 export const Profile = () => {
   const name = useSelector(nameSelector);
@@ -15,8 +16,8 @@ export const Profile = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h3>Profile</h3>
+    <div className="App-main">
+      <h3 className="App-main-title">Profile page</h3>
       <Checkbox
         checked={showName}
         onChange={handleChange}
@@ -24,7 +25,7 @@ export const Profile = () => {
         inputProps={{ "aria-label": "secondary checkbox" }}
       />
       <span>Show name</span>
-      {showName && <div>{name}</div>}
+      {showName && <div className="showName-box">{name}</div>}
     </div>
   );
 };

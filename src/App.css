@@ -2,19 +2,22 @@ body {
   margin: 0 auto;
 }
 
-/* .App {
-  text-align: center;
+.App-main {
   min-height: 100vh;
+  background-color: #edeaf3dc;
+  color: #562a8b;
+  padding-top: 7px;
+}
 
-} */
+.App-main-title {
+  text-align: center;
+}
 
 .App-list {
   display: flex;
 }
 
-.App-main {
-  display: flex;
-}
+
 
 .App-right {
   background-color:rgba(165, 208, 243, 0.986);

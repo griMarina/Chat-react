@@ -20,11 +20,16 @@ export const NoChat = ({ chats, setChats }) => {
 
   return (
     <>
-      <ChatList chats={chats} setChats={setChats} />
-      <h3>Please select a chat or start a new chat!</h3>
-      <IconButton aria-label="add" onClick={addChat}>
-        <AddIcon />
-      </IconButton>
+      <div className="App-main">
+        <h3 className="App-main-title">
+          Please select a chat or start a new chat!
+        </h3>
+        <IconButton aria-label="add" onClick={addChat}>
+          <AddIcon />
+        </IconButton>
+        <ChatList chats={chats} setChats={setChats} />
+        <div className="App-right"></div>
+      </div>
     </>
   );
 };
