@@ -1,7 +1,7 @@
-.MuiBreadcrumbs-root.breadcrumbs {
+/* .MuiBreadcrumbs-root.breadcrumbs {
     margin-top: 20px;
     margin-bottom: 20px;
-}
+} */
 
 .MuiBreadcrumbs-root.breadcrumbs > ol {
     justify-content: center;
@@ -14,4 +14,3 @@
     width: 20px;
     height: 20px;
 }
-

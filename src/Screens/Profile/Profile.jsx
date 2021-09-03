@@ -16,8 +16,8 @@ export const Profile = () => {
   }, [dispatch]);
 
   return (
-    <div className="App-main">
-      <h3 className="App-main-title">Profile page</h3>
+    <div className="App-wrap">
+      <h3 className="App-title">Profile page</h3>
       <Checkbox
         checked={showName}
         onChange={handleChange}

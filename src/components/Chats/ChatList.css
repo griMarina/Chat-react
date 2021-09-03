@@ -6,7 +6,12 @@
 
 }
 
-.chat {
+.MuiListItem-root.chat {
     border-radius: 10px;
-    width: 30%;
+    justify-content: space-between;
+    background-color: rgba(165, 208, 243, 0.986);
+    margin-bottom: 10px;
+}
+.MuiListItem-root.chat > a {
+    text-decoration: none;          
 }

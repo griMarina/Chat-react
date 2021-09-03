@@ -1,12 +1,28 @@
 import { List, ListItem, ListItemText, useTheme } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AddIcon from "@material-ui/icons/Add";
 import { Link } from "react-router-dom";
 import React from "react";
+import { getId } from "../../utils";
+import { getCounter } from "../../utils.js";
 import "./ChatList.css";
+
+const counter = getCounter();
 
 export const ChatList = ({ chats, chatId, setChats }) => {
   const theme = useTheme();
+
+  const addChat = () => {
+    const id = getId();
+    setChats({
+      ...chats,
+      [id]: {
+        name: `Chat ${counter()}`,
+        messages: [],
+      },
+    });
+  };
 
   const deleteChat = (id) => {
     setChats((prevChats) => {
@@ -21,15 +37,7 @@ export const ChatList = ({ chats, chatId, setChats }) => {
       {Object.keys(chats).map((id) => {
         return (
           <React.Fragment key={id}>
-            <ListItem
-              className="chat"
-              style={{
-                backgroundColor: theme.palette.primary.main,
-                color: "white",
-                width: "fit-content",
-                marginBottom: "10px",
-              }}
-            >
+            <ListItem className="chat">
               <Link to={`/chats/${id}`}>
                 <ListItemText
                   style={{ color: id === chatId ? "white" : "grey" }}
@@ -43,6 +51,9 @@ export const ChatList = ({ chats, chatId, setChats }) => {
           </React.Fragment>
         );
       })}
+      <IconButton aria-label="add" onClick={addChat}>
+        <AddIcon />
+      </IconButton>
     </List>
   );
 };

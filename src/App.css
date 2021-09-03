@@ -2,24 +2,28 @@ body {
   margin: 0 auto;
 }
 
-.App-main {
+.App {
   min-height: 100vh;
   background-color: #edeaf3dc;
-  color: #562a8b;
-  padding-top: 7px;
+  padding: 15px;
+
 }
 
-.App-main-title {
+.App-wrap {
+  color: #562a8b;
+}
+
+.App-title {
   text-align: center;
 }
 
-.App-list {
+.App-main {
   display: flex;
+  margin-top: 7px;
+  min-height: 665px;
 }
 
-
-
-.App-right {
+.App-messages {
   background-color:rgba(165, 208, 243, 0.986);
   display: flex;
   flex-direction: column;

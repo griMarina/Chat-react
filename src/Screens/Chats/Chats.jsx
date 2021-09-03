@@ -33,7 +33,7 @@ export const Chats = ({ chats, setChats }) => {
   return (
     <div className="App-main">
       <ChatList chats={chats} chatId={chatId} setChats={setChats} />
-      <div className="App-right">
+      <div className="App-messages">
         <MessageList messages={chats[chatId].messages} />
         <Form messages={chats[chatId].messages} onSubmit={onSubmit} />
       </div>
