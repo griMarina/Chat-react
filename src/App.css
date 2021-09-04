@@ -10,11 +10,12 @@ body {
 }
 
 .App-wrap {
-  color: #562a8b;
+  color: #555556;
 }
 
 .App-title {
   text-align: center;
+  font-weight: normal;
 }
 
 .App-main {

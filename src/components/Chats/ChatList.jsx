@@ -1,7 +1,7 @@
 import { List, ListItem, ListItemText, useTheme } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import AddIcon from "@material-ui/icons/Add";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 import { Link } from "react-router-dom";
 import React from "react";
 import { getId } from "../../utils";
@@ -33,14 +33,20 @@ export const ChatList = ({ chats, chatId, setChats }) => {
   };
 
   return (
-    <List className="chat-list" style={{ padding: 20 }}>
+    <List className="chat-list">
+      <IconButton className="add-chat-btn" aria-label="add" onClick={addChat}>
+        <AddBoxIcon />
+      </IconButton>
       {Object.keys(chats).map((id) => {
         return (
           <React.Fragment key={id}>
-            <ListItem className="chat">
+            <ListItem
+              className="chat"
+              style={{ backgroundColor: id === chatId ? "#a6d1f3" : "inherit" }}
+            >
               <Link to={`/chats/${id}`}>
                 <ListItemText
-                  style={{ color: id === chatId ? "white" : "grey" }}
+                  style={{ color: id === chatId ? "white" : "#555556" }}
                   primary={chats[id].name}
                 />
               </Link>
@@ -51,9 +57,6 @@ export const ChatList = ({ chats, chatId, setChats }) => {
           </React.Fragment>
         );
       })}
-      <IconButton aria-label="add" onClick={addChat}>
-        <AddIcon />
-      </IconButton>
     </List>
   );
 };

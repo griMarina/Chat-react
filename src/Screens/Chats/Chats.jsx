@@ -10,16 +10,17 @@ export const Chats = ({ chats, setChats }) => {
   const { chatId } = useParams();
 
   const onSubmit = useCallback(
-    ({ text }) => {
+    ({ author, text }) => {
       const message = {
         id: getId(),
-        // contact: contact,
+        author: author,
         text: text,
       };
 
       setChats((prevChats) => {
         const newChats = { ...prevChats };
         newChats[chatId].messages = [...newChats[chatId].messages, message];
+        console.log(newChats);
         return newChats;
       });
     },

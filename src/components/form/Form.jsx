@@ -6,7 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import "./Form.css";
 
 export const Form = ({ messages, onSubmit }) => {
-  // const [contact, setContact] = useState("");
+  const [author, setAuthor] = useState("");
   const [text, setText] = useState("");
 
   const inputRef = useRef(null);
@@ -20,13 +20,13 @@ export const Form = ({ messages, onSubmit }) => {
   const handleButtonClick = () => {
     onSubmit({ text });
 
-    // setContact("");
+    setAuthor("");
     setText("");
   };
 
-  // const handleChangeContact = (e) => {
-  //   setContact(e.target.value);
-  // };
+  const handleChangeContact = (e) => {
+    setAuthor(e.target.value);
+  };
 
   const handleChangeText = (e) => {
     setText(e.target.value);
@@ -37,31 +37,23 @@ export const Form = ({ messages, onSubmit }) => {
       <TextField
         className="Form-text"
         id="standard-full"
-        style={{ padding: 10 }}
         placeholder="Type your text"
         value={text}
         onChange={handleChangeText}
         inputRef={inputRef}
       />
-      {/* <TextField
+      <TextField
         className="Form-author"
         id="standard"
-        style={{ padding: 10 }}
-        value={contact}
+        value={author}
         placeholder="To: "
         onChange={handleChangeContact}
-      /> */}
+      />
       <Button
         className="Form-btn"
         variant="contained"
         endIcon={<Icon>send</Icon>}
         onClick={handleButtonClick}
-        style={{
-          paddingLeft: 10,
-          paddingRight: 10,
-          backgroundColor: theme.palette.primary.main,
-          color: "white",
-        }}
       >
         Send
       </Button>

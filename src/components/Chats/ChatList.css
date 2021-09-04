@@ -1,16 +1,23 @@
-.chat-list {
-    min-width: 300px;
+.MuiList-root.chat-list {
+    width: 300px;
     border: solid 1px rgba(165, 208, 243, 0.986);
     border-radius: 10px;
-   
+    padding: 0px 7px 0px 7px;
+}
 
+.MuiList-root.chat-list > .MuiListItem-gutters {
+    padding-right: 0;
+}
+
+.MuiIconButton-root.add-chat-btn {
+    margin-left: 255px;
 }
 
 .MuiListItem-root.chat {
     border-radius: 10px;
     justify-content: space-between;
-    background-color: rgba(165, 208, 243, 0.986);
     margin-bottom: 10px;
+    border: 1px solid rgba(165, 208, 243, 0.986);
 }
 .MuiListItem-root.chat > a {
     text-decoration: none;          

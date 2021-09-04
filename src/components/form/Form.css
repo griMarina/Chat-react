@@ -5,19 +5,25 @@
     justify-content: space-between;
 }
 
-.Form-author {
+.MuiFormControl-root.Form-author {
+    padding: 10px;
     border-radius: 5px;
     background-color: #fff;
     width: 15%;
 }
 
-.Form-text {
+.MuiFormControl-root.Form-text {
+    padding: 10px;
     border-radius: 5px;
     background-color: #fff;
     width: 65%;
 }
 
-.Form-btn {
-    text-transform: uppercase;
-    width: 10%;
+.MuiButton-contained.Form-btn {
+    padding-left: 10px;
+    padding-right: 10px;    
+}
+
+.MuiButton-contained.Form-btn > span{
+    color: #555556;
 }
