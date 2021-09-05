@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText, useTheme } from "@material-ui/core";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
@@ -11,8 +11,6 @@ import "./ChatList.css";
 const counter = getCounter();
 
 export const ChatList = ({ chats, chatId, setChats }) => {
-  const theme = useTheme();
-
   const addChat = () => {
     const id = getId();
     setChats({

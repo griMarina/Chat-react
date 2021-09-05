@@ -1,12 +1,21 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
+import { addMessageAction } from "../../Store/Messages/actions";
+import { chatListSelector } from "../../Store/Chats/selectors";
+import { messageListSelector } from "../../Store/Messages/selectors";
 import "./Form.css";
 
-export const Form = ({ messages, onSubmit }) => {
-  // const [author, setAuthor] = useState("");
+export const Form = ({ chatId }) => {
   const [text, setText] = useState("");
+
+  const chats = useSelector(chatListSelector);
+  const messages = useSelector(messageListSelector);
+
+  const dispatch = useDispatch();
 
   const inputRef = useRef(null);
 
@@ -14,11 +23,14 @@ export const Form = ({ messages, onSubmit }) => {
     inputRef.current?.focus();
   }, [messages]);
 
-  const handleButtonClick = () => {
+  const handleAddMessage = () => {
     onSubmit({ text });
 
-    // setAuthor("");
     setText("");
+  };
+
+  const onSubmit = (message) => {
+    dispatch(addMessageAction({ chatId, message }));
   };
 
   const handleChangeText = (e) => {
@@ -39,7 +51,7 @@ export const Form = ({ messages, onSubmit }) => {
         className="Form-btn"
         variant="contained"
         endIcon={<Icon>send</Icon>}
-        onClick={handleButtonClick}
+        onClick={handleAddMessage}
       >
         Send
       </Button>

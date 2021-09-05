@@ -7,16 +7,16 @@ const initialState = {
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE_ACTION:
-      const currentList = state.messageList[action.chatId] || [];
+      const currentList = state.messageList[action.payload.chatId] || [];
       return {
         ...state,
         messageList: {
           ...state.messageList,
-          [action.chatId]: [
+          [action.payload.chatId]: [
             ...currentList,
             {
-              ...action.message,
-              id: `${action.chatId}${currentList.length}`,
+              ...action.payload.text,
+              id: `${action.payload.chatId}${currentList.length}`,
             },
           ],
         },

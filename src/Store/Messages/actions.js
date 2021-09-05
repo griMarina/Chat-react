@@ -1,7 +1,6 @@
 import { ADD_MESSAGE_ACTION } from "./constans";
 
-export const addMessageAction = (chatId, message) => ({
+export const addMessageAction = (payload) => ({
   type: ADD_MESSAGE_ACTION,
-  chatId,
-  message,
+  payload,
 });
