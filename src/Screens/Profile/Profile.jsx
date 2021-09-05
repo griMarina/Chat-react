@@ -1,31 +1,37 @@
-import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Checkbox } from "@material-ui/core";
-import { toggleShowNameAction } from "../../Store/Profile/actions";
-import { nameSelector } from "../../Store/Profile/selectors";
-import { showNameSelector } from "../../Store/Profile/selectors";
+import { useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { changeNameAction } from "../../Store/Profile/actions";
 import "./Profile.css";
 
 export const Profile = () => {
-  const name = useSelector(nameSelector);
-  const showName = useSelector(showNameSelector);
+  const [name, setName] = useState("");
+
   const dispatch = useDispatch();
 
-  const handleChange = useCallback(() => {
-    dispatch(toggleShowNameAction);
-  }, [dispatch]);
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleClick = useCallback(() => {
+    dispatch(changeNameAction({ name }), [dispatch, name]);
+    setName("");
+  });
 
   return (
     <div className="App-wrap">
       <h3 className="App-title">Profile page</h3>
-      <Checkbox
-        checked={showName}
+      <TextField
+        id="outlined-basic"
+        label="Name"
+        variant="outlined"
         onChange={handleChange}
-        color="primary"
-        inputProps={{ "aria-label": "secondary checkbox" }}
+        value={name}
       />
-      <span>Show name</span>
-      {showName && <div className="showName-box">{name}</div>}
+      <Button variant="contained" color="primary" onClick={handleClick}>
+        Change Name
+      </Button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
-import { TOGGLE_SHOW_NAME_ACTION } from "./constans";
+import { CHANGE_NAME_ACTION } from "./constans";
 
-export const toggleShowNameAction = {
-  type: TOGGLE_SHOW_NAME_ACTION,
-};
+export const changeNameAction = (payload) => ({
+  type: CHANGE_NAME_ACTION,
+  payload,
+});

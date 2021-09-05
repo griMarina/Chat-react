@@ -10,10 +10,10 @@ export const Chats = ({ chats, setChats }) => {
   const { chatId } = useParams();
 
   const onSubmit = useCallback(
-    ({ author, text }) => {
+    ({ text }) => {
       const message = {
         id: getId(),
-        author: author,
+        author: "author",
         text: text,
       };
 
