@@ -1,11 +1,14 @@
-.MuiBreadcrumbs-root.breadcrumbs {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .MuiBreadcrumbs-root.breadcrumbs > ol {
     justify-content: center;
+}
 
+.MuiBreadcrumbs-root.breadcrumbs > ol > li > a {
+    color: #555556;
+    text-decoration: none;
+}
+
+.MuiBreadcrumbs-root.breadcrumbs > ol > li > a:hover {
+    color: rgba(34, 129, 207, 0.986);
 }
 
 
@@ -14,4 +17,3 @@
     width: 20px;
     height: 20px;
 }
-

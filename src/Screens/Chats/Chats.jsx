@@ -4,23 +4,23 @@ import { ChatList } from "../../Components/Chats";
 import { Form } from "../../Components/Form";
 import { MessageList } from "../../Components/Message-list";
 import { ROUTES } from "../../Routing/constants";
-import { GetId } from "../../utils";
+import { getId } from "../../utils";
 
 export const Chats = ({ chats, setChats }) => {
   const { chatId } = useParams();
 
   const onSubmit = useCallback(
-    ({ text }) => {
+    ({ author, text }) => {
       const message = {
-        id: GetId(),
-        // contact: contact,
+        id: getId(),
+        author: author,
         text: text,
       };
 
       setChats((prevChats) => {
-        const messages = [...prevChats[chatId].messages, message];
         const newChats = { ...prevChats };
-        newChats[chatId].messages = messages;
+        newChats[chatId].messages = [...newChats[chatId].messages, message];
+        console.log(newChats);
         return newChats;
       });
     },
@@ -34,7 +34,7 @@ export const Chats = ({ chats, setChats }) => {
   return (
     <div className="App-main">
       <ChatList chats={chats} chatId={chatId} setChats={setChats} />
-      <div className="App-right">
+      <div className="App-messages">
         <MessageList messages={chats[chatId].messages} />
         <Form messages={chats[chatId].messages} onSubmit={onSubmit} />
       </div>

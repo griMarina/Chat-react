@@ -1,4 +1,4 @@
-export const GetCounter = () => {
+export const getCounter = () => {
   let i = 1;
 
   return function () {
@@ -6,6 +6,6 @@ export const GetCounter = () => {
   };
 };
 
-export const GetId = () => {
+export const getId = () => {
   return Math.random();
 };

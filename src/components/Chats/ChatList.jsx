@@ -1,12 +1,28 @@
 import { List, ListItem, ListItemText, useTheme } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AddBoxIcon from "@material-ui/icons/AddBox";
 import { Link } from "react-router-dom";
 import React from "react";
+import { getId } from "../../utils";
+import { getCounter } from "../../utils.js";
 import "./ChatList.css";
+
+const counter = getCounter();
 
 export const ChatList = ({ chats, chatId, setChats }) => {
   const theme = useTheme();
+
+  const addChat = () => {
+    const id = getId();
+    setChats({
+      ...chats,
+      [id]: {
+        name: `Chat ${counter()}`,
+        messages: [],
+      },
+    });
+  };
 
   const deleteChat = (id) => {
     setChats((prevChats) => {
@@ -17,22 +33,20 @@ export const ChatList = ({ chats, chatId, setChats }) => {
   };
 
   return (
-    <List className="chat-list" style={{ padding: 20 }}>
+    <List className="chat-list">
+      <IconButton className="add-chat-btn" aria-label="add" onClick={addChat}>
+        <AddBoxIcon />
+      </IconButton>
       {Object.keys(chats).map((id) => {
         return (
           <React.Fragment key={id}>
             <ListItem
               className="chat"
-              style={{
-                backgroundColor: theme.palette.primary.main,
-                color: "white",
-                width: "fit-content",
-                marginBottom: "10px",
-              }}
+              style={{ backgroundColor: id === chatId ? "#a6d1f3" : "inherit" }}
             >
               <Link to={`/chats/${id}`}>
                 <ListItemText
-                  style={{ color: id === chatId ? "#000000" : "grey" }}
+                  style={{ color: id === chatId ? "white" : "#555556" }}
                   primary={chats[id].name}
                 />
               </Link>

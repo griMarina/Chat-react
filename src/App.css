@@ -2,21 +2,29 @@ body {
   margin: 0 auto;
 }
 
-/* .App {
-  text-align: center;
+.App {
   min-height: 100vh;
+  background-color: #edeaf3dc;
+  padding: 15px;
 
-} */
+}
 
-.App-list {
-  display: flex;
+.App-wrap {
+  color: #555556;
+}
+
+.App-title {
+  text-align: center;
+  font-weight: normal;
 }
 
 .App-main {
   display: flex;
+  margin-top: 7px;
+  min-height: 665px;
 }
 
-.App-right {
+.App-messages {
   background-color:rgba(165, 208, 243, 0.986);
   display: flex;
   flex-direction: column;
