@@ -7,6 +7,8 @@ const initialState = {
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE_ACTION:
+      console.log(state);
+
       const currentList = state.messageList[action.payload.chatId] || [];
       return {
         ...state,
@@ -15,7 +17,7 @@ export const messagesReducer = (state = initialState, action) => {
           [action.payload.chatId]: [
             ...currentList,
             {
-              ...action.payload.text,
+              ...action.payload.message,
               id: `${action.payload.chatId}${currentList.length}`,
             },
           ],

@@ -1,6 +1,12 @@
 import { ADD_CHAT_ACTION } from "./constans";
+import { DELETE_CHAT_ACTION } from "./constans";
 
-export const addChatAction = (name) => ({
+export const addChatAction = (payload) => ({
   type: ADD_CHAT_ACTION,
-  name,
+  payload,
+});
+
+export const deleteChatAction = (payload) => ({
+  type: DELETE_CHAT_ACTION,
+  payload,
 });

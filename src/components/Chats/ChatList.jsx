@@ -2,53 +2,54 @@ import { List, ListItem, ListItemText } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useCallback } from "react";
 import React from "react";
-import { getId } from "../../utils";
-import { getCounter } from "../../utils.js";
+import { Link } from "react-router-dom";
+import { chatListSelector } from "../../Store/Chats/selectors";
+import { addChatAction, deleteChatAction } from "../../Store/Chats/actions";
 import "./ChatList.css";
 
-const counter = getCounter();
+export const ChatList = ({ chatId }) => {
+  const chats = useSelector(chatListSelector);
 
-export const ChatList = ({ chats, chatId, setChats }) => {
-  const addChat = () => {
-    const id = getId();
-    setChats({
-      ...chats,
-      [id]: {
-        name: `Chat ${counter()}`,
-        messages: [],
-      },
-    });
-  };
+  const dispatch = useDispatch();
 
-  const deleteChat = (id) => {
-    setChats((prevChats) => {
-      const newChats = { ...prevChats };
-      delete newChats[id];
-      return newChats;
-    });
-  };
+  const addChat = useCallback(() => {
+    dispatch(addChatAction(), [dispatch]);
+  }, [chats]);
+
+  const deleteChat = useCallback(
+    (id) => {
+      dispatch(deleteChatAction({ id }), [dispatch, id]);
+    },
+    [chats]
+  );
 
   return (
     <List className="chat-list">
       <IconButton className="add-chat-btn" aria-label="add" onClick={addChat}>
         <AddBoxIcon />
       </IconButton>
-      {Object.keys(chats).map((id) => {
+      {chats.map((chat) => {
         return (
-          <React.Fragment key={id}>
+          <React.Fragment key={chat.id}>
             <ListItem
               className="chat"
-              style={{ backgroundColor: id === chatId ? "#a6d1f3" : "inherit" }}
+              style={{
+                backgroundColor: chat.id === chatId ? "#a6d1f3" : "inherit",
+              }}
             >
-              <Link to={`/chats/${id}`}>
+              <Link to={`/chats/${chat.id}`}>
                 <ListItemText
-                  style={{ color: id === chatId ? "white" : "#555556" }}
-                  primary={chats[id].name}
+                  style={{ color: chat.id === chatId ? "white" : "#555556" }}
+                  primary={chat.name}
                 />
               </Link>
-              <IconButton aria-label="delete" onClick={() => deleteChat(id)}>
+              <IconButton
+                aria-label="delete"
+                onClick={() => deleteChat(chat.id)}
+              >
                 <DeleteIcon />
               </IconButton>
             </ListItem>

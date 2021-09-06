@@ -45,7 +45,7 @@ export const Profile = () => {
         value={name}
       />
       <Button variant="contained" color="primary" onClick={handleClick}>
-        Change Name
+        Change and Save Name
       </Button>
       <Checkbox
         checked={showName}

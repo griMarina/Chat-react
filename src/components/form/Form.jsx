@@ -1,18 +1,15 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import { addMessageAction } from "../../Store/Messages/actions";
-import { chatListSelector } from "../../Store/Chats/selectors";
 import { messageListSelector } from "../../Store/Messages/selectors";
 import "./Form.css";
 
 export const Form = ({ chatId }) => {
   const [text, setText] = useState("");
 
-  const chats = useSelector(chatListSelector);
   const messages = useSelector(messageListSelector);
 
   const dispatch = useDispatch();
