@@ -34,25 +34,26 @@ export const ChatList = ({ chatId }) => {
       {chats.map((chat) => {
         return (
           <React.Fragment key={chat.id}>
-            <ListItem
-              className="chat"
-              style={{
-                backgroundColor: chat.id === chatId ? "#a6d1f3" : "inherit",
-              }}
-            >
-              <Link to={`/chats/${chat.id}`}>
+            <Link className="chat-link" to={`/chats/${chat.id}`}>
+              <ListItem
+                className="chat"
+                style={{
+                  backgroundColor: chat.id === chatId ? "#a6d1f3" : "inherit",
+                }}
+              >
                 <ListItemText
                   style={{ color: chat.id === chatId ? "white" : "#555556" }}
                   primary={chat.name}
                 />
-              </Link>
-              <IconButton
-                aria-label="delete"
-                onClick={() => deleteChat(chat.id)}
-              >
-                <DeleteIcon />
-              </IconButton>
-            </ListItem>
+
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => deleteChat(chat.id)}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </ListItem>
+            </Link>
           </React.Fragment>
         );
       })}

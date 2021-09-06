@@ -1,3 +1,4 @@
+import { getId } from "../../utils";
 import { ADD_MESSAGE_ACTION } from "./constans";
 
 const initialState = {
@@ -7,8 +8,6 @@ const initialState = {
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE_ACTION:
-      console.log(state);
-
       const currentList = state.messageList[action.payload.chatId] || [];
       return {
         ...state,
@@ -17,8 +16,8 @@ export const messagesReducer = (state = initialState, action) => {
           [action.payload.chatId]: [
             ...currentList,
             {
-              ...action.payload.message,
-              id: `${action.payload.chatId}${currentList.length}`,
+              id: `id-${getId()}`,
+              text: action.payload.text,
             },
           ],
         },

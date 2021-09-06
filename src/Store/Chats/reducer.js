@@ -1,7 +1,7 @@
-import { ADD_CHAT_ACTION } from "./constans";
-import { DELETE_CHAT_ACTION } from "./constans";
 import { getId } from "../../utils";
 import { getCounter } from "../../utils.js";
+import { ADD_CHAT_ACTION } from "./constans";
+import { DELETE_CHAT_ACTION } from "./constans";
 
 const initialState = {
   chatList: [],
