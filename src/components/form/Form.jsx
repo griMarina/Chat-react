@@ -1,32 +1,29 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
+import { addMessageAction } from "../../Store/Messages/actions";
+import { messageListSelector } from "../../Store/Messages/selectors";
 import "./Form.css";
 
-export const Form = ({ messages, onSubmit }) => {
-  const [author, setAuthor] = useState("");
+export const Form = ({ chatId }) => {
   const [text, setText] = useState("");
 
-  const inputRef = useRef(null);
+  const messages = useSelector(messageListSelector);
 
-  const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [messages]);
 
-  const handleButtonClick = () => {
-    onSubmit({ text });
-
-    setAuthor("");
+  const handleAddMessage = useCallback(() => {
+    dispatch(addMessageAction({ chatId, text }));
     setText("");
-  };
-
-  const handleChangeContact = (e) => {
-    setAuthor(e.target.value);
-  };
+  });
 
   const handleChangeText = (e) => {
     setText(e.target.value);
@@ -42,18 +39,11 @@ export const Form = ({ messages, onSubmit }) => {
         onChange={handleChangeText}
         inputRef={inputRef}
       />
-      <TextField
-        className="Form-author"
-        id="standard"
-        value={author}
-        placeholder="To: "
-        onChange={handleChangeContact}
-      />
       <Button
         className="Form-btn"
         variant="contained"
         endIcon={<Icon>send</Icon>}
-        onClick={handleButtonClick}
+        onClick={handleAddMessage}
       >
         Send
       </Button>

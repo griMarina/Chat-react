@@ -7,5 +7,5 @@ export const getCounter = () => {
 };
 
 export const getId = () => {
-  return Math.random();
+  return (Math.random() * 100000).toFixed();
 };

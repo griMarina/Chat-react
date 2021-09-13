@@ -1,42 +1,28 @@
 import { Redirect, useParams } from "react-router-dom";
-import { useCallback } from "react";
+import { useSelector } from "react-redux";
+import { chatListSelector } from "../../Store/Chats/selectors";
 import { ChatList } from "../../Components/Chats";
 import { Form } from "../../Components/Form";
 import { MessageList } from "../../Components/Message-list";
 import { ROUTES } from "../../Routing/constants";
-import { getId } from "../../utils";
 
-export const Chats = ({ chats, setChats }) => {
+export const Chats = () => {
   const { chatId } = useParams();
 
-  const onSubmit = useCallback(
-    ({ author, text }) => {
-      const message = {
-        id: getId(),
-        author: author,
-        text: text,
-      };
+  const chats = useSelector(chatListSelector);
 
-      setChats((prevChats) => {
-        const newChats = { ...prevChats };
-        newChats[chatId].messages = [...newChats[chatId].messages, message];
-        console.log(newChats);
-        return newChats;
-      });
-    },
-    [chats]
-  );
+  const chat = chats.find((chat) => chat.id === chatId);
 
-  if (!chatId || !chats[chatId]) {
+  if (!chatId || !chat) {
     return <Redirect to={ROUTES.NO_CHAT} />;
   }
 
   return (
     <div className="App-main">
-      <ChatList chats={chats} chatId={chatId} setChats={setChats} />
+      <ChatList chatId={chatId} />
       <div className="App-messages">
-        <MessageList messages={chats[chatId].messages} />
-        <Form messages={chats[chatId].messages} onSubmit={onSubmit} />
+        <MessageList chatId={chatId} />
+        <Form chatId={chatId} />
       </div>
     </div>
   );
