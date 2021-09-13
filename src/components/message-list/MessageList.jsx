@@ -8,6 +8,12 @@ export const MessageList = ({ chatId }) => {
 
   const messages = useSelector(messageListSelector);
 
+  // const getSelectedChat = useMemo(() => getChatById(chatId), [chatId]);
+
+  // const selectedChat = useSelector(getSelectedChat);
+
+  // console.log(selectedChat);
+
   if (!messages[chatId]) {
     return <div className="message-list"></div>;
   }
