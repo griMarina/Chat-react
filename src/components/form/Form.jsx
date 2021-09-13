@@ -28,8 +28,9 @@ export const Form = ({ chatId }) => {
 
     dispatch(addMessageWithThunk({ chatId, message }));
 
-    inputRef.current?.focus();
     setText("");
+
+    inputRef.current?.focus();
   });
 
   return (

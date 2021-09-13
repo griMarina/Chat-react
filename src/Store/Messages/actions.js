@@ -18,9 +18,6 @@ export const addMessageWithThunk =
       const message = {
         text: `${userName}, your message has been sent.`,
       };
-      const timer = setTimeout(
-        () => dispatch(addMessageAction({ chatId, message })),
-        1500
-      );
+      setTimeout(() => dispatch(addMessageAction({ chatId, message })), 1500);
     }
   };
