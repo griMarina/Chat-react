@@ -1,28 +1,36 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
-import { addMessageAction } from "../../Store/Messages/actions";
+import { userNameSelector } from "../../Store/Profile/selectors";
+import { addMessageWithThunk } from "../../Store/Messages/actions";
 import "./Form.css";
 
 export const Form = ({ chatId }) => {
   const [text, setText] = useState("");
 
+  const author = useSelector(userNameSelector);
+
   const dispatch = useDispatch();
 
   const inputRef = useRef(null);
 
-  const handleAddMessage = useCallback(() => {
-    dispatch(addMessageAction({ chatId, text }));
-    setText("");
-
-    inputRef.current?.focus();
-  });
-
   const handleChangeText = (e) => {
     setText(e.target.value);
   };
+
+  const handleAddMessage = useCallback(() => {
+    let message = {
+      author: author,
+      text: text,
+    };
+
+    dispatch(addMessageWithThunk({ chatId, message }));
+
+    inputRef.current?.focus();
+    setText("");
+  });
 
   return (
     <div className="Form">
