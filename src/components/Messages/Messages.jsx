@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { messageListSelector } from "../../Store/Messages/selectors";
-import "./MessageList.css";
+import "./Messages.css";
 
-export const MessageList = ({ chatId }) => {
+export const Messages = ({ chatId }) => {
   const messages = useSelector(messageListSelector);
 
   if (!messages[chatId]) {

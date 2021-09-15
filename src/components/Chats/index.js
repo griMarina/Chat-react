@@ -1,3 +1,3 @@
-import { ChatList } from "./ChatList.jsx";
+import { Chats } from "./Chats.jsx";
 
-export { ChatList };
+export { Chats };
