@@ -21,6 +21,10 @@ export const Breadcrumb = () => {
         <ChatIcon className="breadcrumbs-icon" />
         Chats
       </Link>
+      <Link to={ROUTES.DOGS} color="inherit" className="breadcrumbs-link">
+        <ChatIcon className="breadcrumbs-icon" />
+        Dogs
+      </Link>
     </Breadcrumbs>
   );
 };
