@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getDogsPicturesAction } from "../../Store/Dogs/actions";
 import { dogsPicturesSelector } from "../../Store/Dogs/selectors";
+import { Error } from "../../Components/Error";
+import { RandomDogsPicture } from "../../Components/RandomDogsPicture/RandomDogsPicture";
 
 export const Dogs = () => {
   const { loading, error, dogs } = useSelector(dogsPicturesSelector);
-
-  console.log(dogs);
 
   const dispatch = useDispatch();
 
@@ -20,20 +20,13 @@ export const Dogs = () => {
     dispatch(getDogsPicturesAction());
   };
 
-  //   const renderDogsPictures = useCallback((dogs)=><li key={dogs.id}>{dogs})
-
   if (loading) {
     return <CircularProgress />;
   }
 
   if (error) {
-    return (
-      <>
-        <h3>Error occured</h3>
-        <button onClick={handleUpdatePage}>Update</button>
-      </>
-    );
+    return <Error handleUpdatePage={handleUpdatePage} />;
   }
 
-  return <img src={dogs.url} alt="img" />;
+  return <RandomDogsPicture dogs={dogs} handleUpdatePage={handleUpdatePage} />;
 };

@@ -1,0 +1,14 @@
+.dogs-block {
+    margin-top: 50px;
+    
+}
+
+.dogs-img {
+    display: block;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.MuiButton-root.update-btn {
+    margin-top: 30px;
+}

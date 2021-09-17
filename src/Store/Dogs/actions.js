@@ -5,6 +5,8 @@ import {
   GET_DOGS_PICTURES_COMPLETE_ACTION,
 } from "./constans";
 
+const GET_DOGS_URL = "https://random.dog/woof.json";
+
 export const getDogsPicturesRequestAction = (payload) => ({
   type: GET_DOGS_PICTURES_REQUEST_ACTION,
   payload,
@@ -25,25 +27,23 @@ export const getDogsPicturesCompleteAction = (payload) => ({
   payload,
 });
 
-const GET_DOGS_URL = "https://random.dog/woof.json";
-
 export const getDogsPicturesAction =
   (payload) => async (dispatch, getState) => {
     try {
       dispatch(getDogsPicturesRequestAction());
       const response = await fetch(GET_DOGS_URL);
-      console.log(response);
 
       if (!response.ok) {
         throw new Error(`Error occured ${response.status}`);
       }
 
       const result = await response.json();
-      console.log(result);
 
       dispatch(getDogsPicturesSuccessAction(result));
     } catch (error) {
-      dispatch(getDogsPicturesRefuseAction());
+      const errorStatus = error;
+
+      dispatch(getDogsPicturesRefuseAction(errorStatus));
     } finally {
       dispatch(getDogsPicturesCompleteAction());
     }
