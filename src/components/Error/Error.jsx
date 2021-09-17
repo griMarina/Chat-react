@@ -1,10 +1,11 @@
 import Button from "@material-ui/core/Button";
 import ReplayIcon from "@material-ui/icons/Replay";
+import Container from "@material-ui/core/Container";
 
 export const Error = ({ handleUpdatePage }) => {
   return (
-    <div className="App-wrap">
-      <h3 className="App-title">Error occured</h3>
+    <Container className="App-wrap" maxWidth="sm">
+      <h3 className="App-title error">Error occured</h3>
       <Button
         onClick={handleUpdatePage}
         variant="outlined"
@@ -12,6 +13,6 @@ export const Error = ({ handleUpdatePage }) => {
       >
         Update
       </Button>
-    </div>
+    </Container>
   );
 };

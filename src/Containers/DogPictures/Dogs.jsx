@@ -1,4 +1,5 @@
 import { CircularProgress } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -21,7 +22,11 @@ export const Dogs = () => {
   };
 
   if (loading) {
-    return <CircularProgress />;
+    return (
+      <Container className="App-wrap loading" maxWidth="sm">
+        <CircularProgress />
+      </Container>
+    );
   }
 
   if (error) {

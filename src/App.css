@@ -18,6 +18,10 @@ body {
   font-weight: normal;
 }
 
+.error, .loading {
+  margin-top: 150px;
+}
+
 .App-main {
   display: flex;
   margin-top: 7px;
