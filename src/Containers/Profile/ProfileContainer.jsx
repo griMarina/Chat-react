@@ -23,13 +23,13 @@ export const ProfileContainer = () => {
   };
 
   const handleChangeCheckbox = useCallback(() => {
-    dispatch(toggleShowNameAction(), [dispatch]);
-  });
+    dispatch(toggleShowNameAction());
+  }, [dispatch]);
 
   const handleClick = useCallback(() => {
-    dispatch(changeNameAction({ name }), [dispatch, name]);
+    dispatch(changeNameAction({ name }));
     setName("");
-  });
+  }, [dispatch, name]);
 
   return (
     <Profile
