@@ -3,14 +3,14 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { useCallback } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
 import { chatListSelector } from "../../Store/Chats/selectors";
 import { addChatAction, deleteChatAction } from "../../Store/Chats/actions";
-import "./ChatList.css";
+import "./Chats.css";
 
-export const ChatList = ({ chatId }) => {
+export const Chats = ({ chatId }) => {
   const chats = useSelector(chatListSelector);
 
   const dispatch = useDispatch();

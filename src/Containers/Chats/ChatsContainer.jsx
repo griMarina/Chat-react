@@ -1,12 +1,12 @@
 import { Redirect, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { chatListSelector } from "../../Store/Chats/selectors";
-import { ChatList } from "../../Components/Chats";
-import { Form } from "../../Components/Form";
-import { MessageList } from "../../Components/Message-list";
+import { Chats } from "../../Components/Chats";
+import { FormContainer } from "../../Containers/Form";
+import { Messages } from "../../Components/Messages";
 import { ROUTES } from "../../Routing/constants";
 
-export const Chats = () => {
+export const ChatsContainer = () => {
   const { chatId } = useParams();
 
   const chats = useSelector(chatListSelector);
@@ -19,10 +19,10 @@ export const Chats = () => {
 
   return (
     <div className="App-main">
-      <ChatList chatId={chatId} />
+      <Chats chatId={chatId} />
       <div className="App-messages">
-        <MessageList chatId={chatId} />
-        <Form chatId={chatId} />
+        <Messages chatId={chatId} />
+        <FormContainer chatId={chatId} />
       </div>
     </div>
   );

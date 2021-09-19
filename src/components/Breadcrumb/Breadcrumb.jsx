@@ -1,7 +1,7 @@
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import ChatIcon from "@material-ui/icons/Chat";
 import HomeIcon from "@material-ui/icons/Home";
-import AccountBoxIcon from "@material-ui/icons/AccountBox"; // иконки в одном импрорте не работают...
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../Routing/constants";
 import "./Breadcrumb.css";

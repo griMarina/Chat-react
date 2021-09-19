@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router-dom";
-import { Main } from "../Screens/Main";
-import { Profile } from "../Screens/Profile";
-import { Chats } from "../Screens/Chats";
-import { NoChat } from "../Screens/NoChat";
+import { Main } from "../Components/Main";
+import { ProfileContainer } from "../Containers/Profile";
+import { ChatsContainer } from "../Containers/Chats";
+import { NoChat } from "../Components/NoChat";
 import { ROUTES } from "./constants";
 
 export const Routing = () => {
@@ -12,10 +12,10 @@ export const Routing = () => {
         <Main />
       </Route>
       <Route path={ROUTES.PROFILE}>
-        <Profile />
+        <ProfileContainer />
       </Route>
       <Route exact path={ROUTES.CHATS}>
-        <Chats />
+        <ChatsContainer />
       </Route>
       <Route path={ROUTES.NO_CHAT}>
         <NoChat />

@@ -1,13 +1,10 @@
 import { getId } from "../../utils";
-import { getCounter } from "../../utils.js";
 import { ADD_CHAT_ACTION } from "./constans";
 import { DELETE_CHAT_ACTION } from "./constans";
 
 const initialState = {
   chatList: [],
 };
-
-const counter = getCounter();
 
 export const chatsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,7 +15,7 @@ export const chatsReducer = (state = initialState, action) => {
           ...state.chatList,
           {
             id: `id${getId()}`,
-            name: `Chat ${counter()}`,
+            name: `Chat ${state.chatList.length + 1}`,
           },
         ],
       };

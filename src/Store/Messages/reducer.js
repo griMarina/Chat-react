@@ -17,7 +17,7 @@ export const messagesReducer = (state = initialState, action) => {
             ...currentList,
             {
               id: `id-${getId()}`,
-              text: action.payload.text,
+              ...action.payload.message,
             },
           ],
         },
