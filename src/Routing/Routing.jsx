@@ -1,10 +1,10 @@
 import { Route, Switch } from "react-router-dom";
-import { Main } from "../Components/Main";
+import { Main } from "../Containers/Main";
 import { ProfileContainer } from "../Containers/Profile";
 import { ChatsContainer } from "../Containers/Chats";
-import { NoChat } from "../Components/NoChat";
+import { NoChat } from "../Containers/NoChat";
 import { Dogs } from "../Containers/DogPictures";
-import { NotFound } from "../Components/NotFound";
+import { NotFound } from "../Containers/NotFound";
 import { ROUTES } from "./constants";
 
 export const Routing = () => {

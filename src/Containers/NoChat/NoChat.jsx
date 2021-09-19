@@ -1,4 +1,4 @@
-import { Chats } from "../Chats";
+import { Chats } from "../../Components/Chats";
 
 export const NoChat = () => {
   return (
