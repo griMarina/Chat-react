@@ -28,7 +28,7 @@ export const FormContainer = ({ chatId }) => {
     setText("");
 
     inputRef.current?.focus();
-  });
+  }, [dispatch, author, text, chatId]);
 
   return (
     <Form

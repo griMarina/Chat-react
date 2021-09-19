@@ -11,11 +11,15 @@ body {
 
 .App-wrap {
   color: #555556;
+  text-align: center;
 }
 
 .App-title {
-  text-align: center;
   font-weight: normal;
+}
+
+.error, .loading {
+  margin-top: 150px;
 }
 
 .App-main {
