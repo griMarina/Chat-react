@@ -1,0 +1,6 @@
+.MuiButton-root.signout-btn {
+    color: #555556;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
