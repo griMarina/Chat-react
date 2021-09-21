@@ -4,27 +4,50 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import { chatListSelector } from "../../Store/Chats/selectors";
 import { addChatAction, deleteChatAction } from "../../Store/Chats/actions";
 import "./Chats.css";
+import { firebase } from "../../Services/firebase";
+
+import { getId } from "../../utils";
 
 export const Chats = ({ chatId }) => {
-  const chats = useSelector(chatListSelector);
+  // const chats = useSelector(chatListSelector);
+
+  const [chats, setChats] = useState([]);
 
   const dispatch = useDispatch();
 
   const addChat = useCallback(() => {
-    dispatch(addChatAction());
-  }, [dispatch]);
+    let chat = {
+      id: `id${getId()}`,
+      name: `Chat`,
+    };
+    firebase.database().ref("chatList").child(chatId).push(chat);
+    // dispatch(addChatAction());
+  }, []);
 
-  const deleteChat = useCallback(
-    (id) => {
-      dispatch(deleteChatAction({ id }));
-    },
-    [dispatch]
-  );
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("chatList")
+      .on("value", (snapshot) => {
+        const newChats = [];
+        snapshot.forEach((snap) => {
+          newChats.push(snap.val());
+        });
+        setChats(newChats);
+      });
+  }, []);
+
+  console.log(chats);
+
+  const deleteChat = useCallback((id) => {
+    // firebase.database().ref("chatList").child(chat.id).remove;
+    // dispatch(deleteChatAction({ id }));
+  }, []);
 
   return (
     <List className="chat-list">
@@ -32,6 +55,7 @@ export const Chats = ({ chatId }) => {
         <AddBoxIcon />
       </IconButton>
       {chats.map((chat) => {
+        console.log(chat.id);
         return (
           <React.Fragment key={chat.id}>
             <Link className="chat-link" to={`/chats/${chat.id}`}>

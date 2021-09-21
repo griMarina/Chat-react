@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userNameSelector } from "../../Store/Profile/selectors";
 import { addMessageWithThunk } from "../../Store/Messages/actions";
 import { Form } from "../../Components/Form/Form";
+import { firebase } from "../../Services/firebase";
 
 export const FormContainer = ({ chatId }) => {
   const [text, setText] = useState("");

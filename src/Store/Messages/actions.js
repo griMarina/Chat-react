@@ -1,5 +1,6 @@
 import { ADD_MESSAGE_ACTION } from "./constans";
 import { userNameSelector } from "../Profile/selectors";
+import { firebase } from "../../Services/firebase";
 
 export const addMessageAction = (payload) => ({
   type: ADD_MESSAGE_ACTION,
@@ -9,6 +10,8 @@ export const addMessageAction = (payload) => ({
 export const addMessageWithThunk =
   ({ chatId, message }) =>
   (dispatch, getState) => {
+    // firebase.database().ref("chats").child(chatId).push(message);
+
     dispatch(addMessageAction({ chatId, message }));
 
     const state = getState();
