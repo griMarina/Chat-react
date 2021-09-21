@@ -1,6 +1,9 @@
 import { getId } from "../../utils";
-import { ADD_CHAT_ACTION } from "./constans";
-import { DELETE_CHAT_ACTION } from "./constans";
+import {
+  ADD_CHAT_ACTION,
+  CHANGE_CHAT_ACTION,
+  DELETE_CHAT_ACTION,
+} from "./constans";
 
 const initialState = {
   chatList: [],
@@ -8,6 +11,11 @@ const initialState = {
 
 export const chatsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_CHAT_ACTION:
+      return {
+        ...state,
+        chatList: [...state.chatList],
+      };
     case ADD_CHAT_ACTION:
       return {
         ...state,
