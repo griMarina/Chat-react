@@ -2,22 +2,24 @@ import { useSelector } from "react-redux";
 import { messageListSelector } from "../../Store/Messages/selectors";
 import "./Messages.css";
 
-export const Messages = ({ chatId }) => {
+export const Messages = () => {
   const messages = useSelector(messageListSelector);
 
-  if (!messages[chatId]) {
-    return <div className="message-list"></div>;
-  }
+  // if (!messages[chatId]) {
+  //   return <div className="message-list"></div>;
+  // }
 
   return (
     <div className="message-list">
-      {messages[chatId].map((message) => {
+      {messages.map((item) => {
+        console.log(item);
+
         return (
           <div
-            className={message.author ? "message" : " message botMessage"}
-            key={message.id}
+            className={item.message.author ? "message" : " message botMessage"}
+            key={item.id}
           >
-            <span>{message.text}</span>
+            <span>{item.message.text}</span>
           </div>
         );
       })}

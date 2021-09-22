@@ -4,18 +4,15 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import React from "react";
 import { chatListSelector } from "../../Store/Chats/selectors";
 import {
   addChatWithFirebase,
-  deleteChatAction,
+  deleteChatWithFirebase,
   initChatsTracking,
 } from "../../Store/Chats/actions";
 import "./Chats.css";
-import { firebase } from "../../Services/firebase";
-
-import { getId } from "../../utils";
 
 export const Chats = ({ chatId }) => {
   const chats = useSelector(chatListSelector);
@@ -24,17 +21,18 @@ export const Chats = ({ chatId }) => {
 
   const addChat = useCallback(() => {
     dispatch(addChatWithFirebase());
-  }, []);
+  }, [dispatch]);
+
+  const deleteChat = useCallback(
+    (id) => {
+      dispatch(deleteChatWithFirebase(id));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     dispatch(initChatsTracking());
-  }, []);
-
-  const deleteChat = useCallback();
-  //   (id) => {
-  //     dispatch(deleteChatAction({ id }));
-  //   },
-  //   [dispatch]
+  }, [dispatch]);
 
   return (
     <List className="chat-list">

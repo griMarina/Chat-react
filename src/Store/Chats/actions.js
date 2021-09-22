@@ -1,68 +1,48 @@
 import { firebase } from "../../Services/firebase";
-import {
-  ADD_CHAT_ACTION,
-  CHANGE_CHAT_ACTION,
-  DELETE_CHAT_ACTION,
-} from "./constans";
+import { CHANGE_CHAT_ACTION } from "./constans";
+import { getCounter } from "../../utils";
 
 export const changeChatAction = (payload) => ({
   type: CHANGE_CHAT_ACTION,
   payload,
 });
 
-export const addChatAction = (payload) => ({
-  type: ADD_CHAT_ACTION,
-  payload,
-});
+const count = getCounter();
 
-export const deleteChatAction = (payload) => ({
-  type: DELETE_CHAT_ACTION,
-  payload,
-});
-
-const getPayloadFromSnapshot = (snapshot) => {
-  const chats = [];
-
-  snapshot.forEach((chat) => {
-    chats.push(chat.val());
-  });
-
-  console.log(snapshot.key);
-  return { chatId: snapshot.key, chats };
-};
-
-export const addChatWithFirebase = () => async (dispatch) => {
-  //   firebase
-  //     .database()
-  //     .ref("chatList")
-  //     .on("child_changed", (snapshot) => {
-  //       const payload = getPayloadFromSnapshot(snapshot);
-  //       dispatch(changeChatAction());
-  //     });
-};
-
-export const initChatsTracking = () => (dispatch) => {
-  firebase
+export const addChatWithFirebase = () => async () => {
+  await firebase
     .database()
     .ref("chatList")
-    .on("child_changed", (snapshot) => {
-      const payload = getPayloadFromSnapshot(snapshot);
-      dispatch(changeChatAction());
-    });
+    .push({ name: `Chat ${count()}` });
+};
 
-  firebase
-    .database()
-    .ref("chats")
-    .on("child_added", (snapshot) => {
-      const payload = getPayloadFromSnapshot(snapshot);
-      dispatch(addChatAction());
-    });
+export const deleteChatWithFirebase = (id) => async () => {
+  await firebase.database().ref("chatList").child(id).remove();
+};
 
-  firebase
+export const initChatsTracking = () => async (dispatch) => {
+  await firebase
     .database()
-    .ref("chats")
-    .on("child_removed", (snapshot) => {
-      const payload = getPayloadFromSnapshot(snapshot);
-      dispatch(deleteChatAction(snapshot));
+    .ref("chatList")
+    .on("value", (snapshot) => {
+      const newChats = [];
+
+      snapshot.forEach((chat) => {
+        newChats.push({
+          id: chat.ref.key,
+          name: chat.val().name,
+        });
+      });
+      dispatch(changeChatAction(newChats));
     });
 };
+
+// export const addChatAction = (payload) => ({
+//   type: ADD_CHAT_ACTION,
+//   payload,
+// });
+
+// export const deleteChatAction = (payload) => ({
+//   type: DELETE_CHAT_ACTION,
+//   payload,
+// });
