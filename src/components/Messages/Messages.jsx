@@ -12,8 +12,6 @@ export const Messages = () => {
   return (
     <div className="message-list">
       {messages.map((item) => {
-        console.log(item);
-
         return (
           <div
             className={item.message.author ? "message" : " message botMessage"}
