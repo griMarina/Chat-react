@@ -2,9 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { store, persistor } from "./Store";
 import { Breadcrumb } from "./Components/Breadcrumb";
 import { Routing } from "./Routing/Routing";
-import { store, persistor } from "./Store";
 import "./App.css";
 
 const App = () => {

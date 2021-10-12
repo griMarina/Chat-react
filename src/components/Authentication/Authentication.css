@@ -1,0 +1,18 @@
+.authentication {
+    display: flex;
+    justify-content:center;
+    margin-top: 30px;
+}
+
+.authentication > a {
+    text-decoration: none;
+}
+
+.authentication > a > .MuiButton-root {
+    color: #555556;
+}
+
+
+.signin-link {
+    margin-right: 50px;
+}

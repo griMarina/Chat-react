@@ -7,19 +7,20 @@ import { getDogsPicturesAction } from "../../Store/Dogs/actions";
 import { dogsPicturesSelector } from "../../Store/Dogs/selectors";
 import { Error } from "../../Components/Error";
 import { RandomDogsPicture } from "../../Components/RandomDogsPicture/RandomDogsPicture";
+import { useCallback } from "react";
 
 export const Dogs = () => {
   const { loading, error, dogs } = useSelector(dogsPicturesSelector);
 
   const dispatch = useDispatch();
 
+  const handleUpdatePage = useCallback(() => {
+    dispatch(getDogsPicturesAction());
+  }, [dispatch]);
+
   useEffect(() => {
     handleUpdatePage();
-  }, []);
-
-  const handleUpdatePage = () => {
-    dispatch(getDogsPicturesAction());
-  };
+  }, [handleUpdatePage]);
 
   if (loading) {
     return (
